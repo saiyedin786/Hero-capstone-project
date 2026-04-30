@@ -40,21 +40,21 @@ pipeline {
         stage("Update: Kubernetes manifests"){
             steps{
                 script{
-                    dir('kubernetes'){
+                    dir('kubernetes/k8s-manifests/admin'){
                         sh """
-                            sed -i -e s/shopnow-admin.*/shopnow-admin:${params.ADMIN_DOCKER_TAG}/g admin.yaml
+                            sed -i -e s/shopnow-admin.*/shopnow-admin:${params.ADMIN_DOCKER_TAG}/g deployment.yaml
                         """
                     }
 
-                     dir('kubernetes'){
+                     dir('kubernetes/k8s-manifests/backend'){
                         sh """
-                            sed -i -e s/shopnow-backend.*/shopnow-backend:${params.BACKEND_DOCKER_TAG}/g backend.yaml
+                            sed -i -e s/shopnow-backend.*/shopnow-backend:${params.BACKEND_DOCKER_TAG}/g deployment.yaml
                         """
                     }
                     
-                    dir('kubernetes'){
+                    dir('kubernetes/k8s-manifests/frontend'){
                         sh """
-                            sed -i -e s/shopnow-frontend.*/shopnow-frontend:${params.FRONTEND_DOCKER_TAG}/g frontend.yaml
+                            sed -i -e s/shopnow-frontend.*/shopnow-frontend:${params.FRONTEND_DOCKER_TAG}/g deployment.yaml
                         """
                     }
                     
