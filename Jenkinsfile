@@ -78,12 +78,16 @@ pipeline {
         stage("Docker: Build Images"){
             steps{
                 script{
+                        dir('admin'){
+                            docker_build("shopnow-admin","${params.BACKEND_DOCKER_TAG}","saiyedin786")
+                        }
+                    
                         dir('backend'){
-                            docker_build("wanderlust-backend-beta","${params.BACKEND_DOCKER_TAG}","trainwithshubham")
+                            docker_build("shopnow-backend","${params.BACKEND_DOCKER_TAG}","saiyedin786")
                         }
                     
                         dir('frontend'){
-                            docker_build("wanderlust-frontend-beta","${params.FRONTEND_DOCKER_TAG}","trainwithshubham")
+                            docker_build("shopnow-frontend","${params.FRONTEND_DOCKER_TAG}","trainwithshubham")
                         }
                 }
             }
