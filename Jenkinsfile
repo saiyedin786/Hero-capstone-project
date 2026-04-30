@@ -7,6 +7,7 @@ pipeline {
     }
     
     parameters {
+        string(name: 'ADMIN_DOCKER_TAG', defaultValue: '', description: 'Setting docker image for latest push')
         string(name: 'FRONTEND_DOCKER_TAG', defaultValue: '', description: 'Setting docker image for latest push')
         string(name: 'BACKEND_DOCKER_TAG', defaultValue: '', description: 'Setting docker image for latest push')
     }
@@ -15,8 +16,8 @@ pipeline {
         stage("Validate Parameters") {
             steps {
                 script {
-                    if (params.FRONTEND_DOCKER_TAG == '' || params.BACKEND_DOCKER_TAG == '') {
-                        error("FRONTEND_DOCKER_TAG and BACKEND_DOCKER_TAG must be provided.")
+                    if (params.FRONTEND_DOCKER_TAG == '' || params.BACKEND_DOCKER_TAG == '' || params.ADMIN_DOCKER_TAG == '') {
+                        error("ADMIN_DOCKER_TAG, FRONTEND_DOCKER_TAG and BACKEND_DOCKER_TAG must be provided.")
                     }
                 }
             }
@@ -107,6 +108,7 @@ pipeline {
         success{
             archiveArtifacts artifacts: '*.xml', followSymlinks: false
             build job: "shopnow-CD", parameters: [
+                string(name: 'ADMIN_DOCKER_TAG', value: "${params.ADMIN_DOCKER_TAG}"),
                 string(name: 'FRONTEND_DOCKER_TAG', value: "${params.FRONTEND_DOCKER_TAG}"),
                 string(name: 'BACKEND_DOCKER_TAG', value: "${params.BACKEND_DOCKER_TAG}")
             ]
