@@ -21,7 +21,7 @@ pipeline {
         stage('Git: Code Checkout') {
             steps {
                 script{
-                    code_checkout("https://github.com/saiyedin786/Wanderlust-Mega-Project.git","main")
+                    code_checkout("https://github.com/saiyedin786/Hero-capstone-project.git","main")
                 }
             }
         }
@@ -29,6 +29,7 @@ pipeline {
         stage('Verify: Docker Image Tags') {
             steps {
                 script{
+                    echo "ADMIN_DOCKER_TAG: ${params.ADMIN_DOCKER_TAG}"
                     echo "FRONTEND_DOCKER_TAG: ${params.FRONTEND_DOCKER_TAG}"
                     echo "BACKEND_DOCKER_TAG: ${params.BACKEND_DOCKER_TAG}"
                 }
