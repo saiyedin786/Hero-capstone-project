@@ -4,6 +4,7 @@ pipeline {
     agent any
     
     parameters {
+        string(name: 'ADMIN_DOCKER_TAG', defaultValue: '', description: 'Admin Docker tag of the image built by the CI job')
         string(name: 'FRONTEND_DOCKER_TAG', defaultValue: '', description: 'Frontend Docker tag of the image built by the CI job')
         string(name: 'BACKEND_DOCKER_TAG', defaultValue: '', description: 'Backend Docker tag of the image built by the CI job')
     }
