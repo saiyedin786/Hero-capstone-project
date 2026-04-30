@@ -87,7 +87,7 @@ pipeline {
                         }
                     
                         dir('frontend'){
-                            docker_build("shopnow-frontend","${params.FRONTEND_DOCKER_TAG}","trainwithshubham")
+                            docker_build("shopnow-frontend","${params.FRONTEND_DOCKER_TAG}","saiyedin786")
                         }
                 }
             }
