@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: admin
-        image: saiyedin786/shopnow-admin:v2
+        image: saiyedin786/shopnow-admin:v3
         ports:
         - containerPort: 80
         resources:

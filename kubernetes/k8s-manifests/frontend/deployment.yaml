@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: saiyedin786/shopnow-frontend:v2
+        image: saiyedin786/shopnow-frontend:v3
         ports:
         - containerPort: 80
         resources:
