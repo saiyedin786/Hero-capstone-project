@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: docker push saiyedin786/shopnow-frontend:v2
+  repository: saiyedin786/shopnow-frontend:v2
   tag: 2
   pullPolicy: IfNotPresent
 
