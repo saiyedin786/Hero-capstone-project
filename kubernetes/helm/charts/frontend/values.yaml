@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: 2254292659362.dkr.ecr.ap-south-1.amazonaws.com/ismail-shopnow/frontend
+  repository: saiyedin786/shopnow-frontend
   tag: latest
   pullPolicy: IfNotPresent
 

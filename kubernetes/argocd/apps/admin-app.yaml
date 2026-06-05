@@ -15,7 +15,7 @@ spec:
       valueFiles: []
       releaseName: admin
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: 'https://2045DB8E308D74C68665DAD32ACCB1CB.gr7.ap-south-1.eks.amazonaws.com'
     namespace: shopnow-demo
   syncPolicy:
     automated:

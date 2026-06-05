@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: 254292659362.dkr.ecr.ap-south-1.amazonaws.com/ismail-shopnow/backend
+  repository: saiyedin786/shopnow-backend
   tag: latest
   pullPolicy: IfNotPresent
 
