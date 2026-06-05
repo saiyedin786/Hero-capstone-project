@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: 254292659362.dkr.ecr.ap-south-1.amazonaws.com/ismail-shopnow/admin
-  tag: latest
+  tag: v1.1
   pullPolicy: IfNotPresent
 
 service:
