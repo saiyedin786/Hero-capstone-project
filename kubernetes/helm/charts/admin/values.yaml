@@ -49,10 +49,10 @@ nginx:
       }
       
       # Health check
-      location = /health {
-        return 200 'OK';
-        add_header Content-Type text/plain;
-      }
+      # location = /health {
+      #   return 200 'OK';
+      #   add_header Content-Type text/plain;
+      # }
       
       # Security headers
       add_header X-Content-Type-Options nosniff;

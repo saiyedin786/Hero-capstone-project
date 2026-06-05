@@ -20,18 +20,18 @@ spec:
             - containerPort: {{ .Values.service.port }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: {{ .Values.service.port }}
-            initialDelaySeconds: 10
-            periodSeconds: 20
-          readinessProbe:
-            httpGet:
-              path: /
-              port: {{ .Values.service.port }}
-            initialDelaySeconds: 5
-            periodSeconds: 10
+          # livenessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: {{ .Values.service.port }}
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 20
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: {{ .Values.service.port }}
+          #   initialDelaySeconds: 5
+          #   periodSeconds: 10
           volumeMounts:
             {{- if .Values.nginx.enableConfigMap }}
             - name: nginx-conf

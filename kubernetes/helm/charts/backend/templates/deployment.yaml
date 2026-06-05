@@ -27,15 +27,15 @@ spec:
             {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
-          livenessProbe:
-            httpGet:
-              path: /api/health
-              port: {{ .Values.service.port }}
-            initialDelaySeconds: 15
-            periodSeconds: 20
-          readinessProbe:
-            httpGet:
-              path: /api/health
-              port: {{ .Values.service.port }}
-            initialDelaySeconds: 5
-            periodSeconds: 10
+          # livenessProbe:
+          #   httpGet:
+          #     path: /api/health
+          #     port: {{ .Values.service.port }}
+          #   initialDelaySeconds: 15
+          #   periodSeconds: 20
+          # readinessProbe:
+          #   httpGet:
+          #     path: /api/health
+          #     port: {{ .Values.service.port }}
+          #   initialDelaySeconds: 5
+          #   periodSeconds: 10

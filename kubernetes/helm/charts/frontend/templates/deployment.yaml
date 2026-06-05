@@ -22,18 +22,18 @@ spec:
             - containerPort: {{ .Values.service.port }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
-          livenessProbe:
-            httpGet:
-              path: {{ .Values.livenessProbe.path }}
-              port: {{ .Values.livenessProbe.port }}
-            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
-            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
-          readinessProbe:
-            httpGet:
-              path: {{ .Values.readinessProbe.path }}
-              port: {{ .Values.readinessProbe.port }}
-            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+          # livenessProbe:
+          #   httpGet:
+          #     path: {{ .Values.livenessProbe.path }}
+          #     port: {{ .Values.livenessProbe.port }}
+          #   initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+          #   periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+          # readinessProbe:
+          #   httpGet:
+          #     path: {{ .Values.readinessProbe.path }}
+          #     port: {{ .Values.readinessProbe.port }}
+          #   initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+          #   periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
           volumeMounts:
             {{- if .Values.nginx.enableConfigMap }}
             - name: nginx-conf
