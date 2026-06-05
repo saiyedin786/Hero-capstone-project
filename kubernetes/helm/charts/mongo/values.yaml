@@ -16,20 +16,17 @@ stateful:
 
 resources:
   requests:
-    cpu: "200m"
-    memory: "256Mi"
+    cpu: 200m
+    memory: 256Mi
   limits:
     cpu: "1"
-    memory: "1Gi"
+    memory: 1Gi
 
 readinessProbe:
   initialDelaySeconds: 20
   periodSeconds: 10
   timeoutSeconds: 5
 
-# Demo-only retention policy
-# When this StatefulSet is deleted, PVCs created from volumeClaimTemplates will be deleted.
-# When the StatefulSet is scaled down, PVCs for removed replicas will be deleted.
 persistentVolumeClaimRetentionPolicy:
   whenDeleted: Delete
   whenScaled: Delete
