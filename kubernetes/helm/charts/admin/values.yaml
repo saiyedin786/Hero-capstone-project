@@ -1,8 +1,8 @@
 replicaCount: 1
 
 image:
-  repository: saiyedin786/shopnow-admin:v2
-  tag: 2
+  repository: saiyedin786/shopnow-admin
+  tag: v2
   pullPolicy: IfNotPresent
 
 service:
