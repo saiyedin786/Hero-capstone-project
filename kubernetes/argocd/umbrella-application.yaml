@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/saiyedin786/shopNow.git'
+    repoURL: 'https://github.com/saiyedin786/Hero-capstone-project.git'
     targetRevision: HEAD
     path: kubernetes/argocd/apps
   destination:
