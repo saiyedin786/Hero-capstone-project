@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: saiyedin786/shopnow-frontend
-  tag: v1.2
+  tag: v1.3
   pullPolicy: IfNotPresent
 
 service:
