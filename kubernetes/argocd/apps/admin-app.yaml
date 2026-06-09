@@ -15,7 +15,7 @@ spec:
       valueFiles: []
       releaseName: admin
   destination:
-    server: 'https://AE3DF6371891287983D606676E244D14.gr7.ap-south-1.eks.amazonaws.com'
+    server: 'https://E7A7A4713A01052C7BC01F7A8EB2CB0E.gr7.ap-south-1.eks.amazonaws.com'
     namespace: shopnow-demo
   syncPolicy:
     automated:
