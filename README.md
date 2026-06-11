@@ -1262,45 +1262,127 @@ Click create
 <img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/4ce6b61a-b012-472e-a7db-697e20b3483b" />
 
 
+Step:10 Email-setup
+Go to gmail.com
+Profile-> manage account
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/63e183e6-1dd6-4d08-80f9-cbc9f60c8bcc" />
+
+Click security and signin in left
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/28d0147e-19c7-4b69-b020-8e9ee09682b7" />
+
+Search app password in searchbox and click
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/8be8a393-5f0e-4f9e-a8a4-39951e2e5f76" />
+
+Give some name and create
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/401ac6b1-e966-40fe-848c-866229474a6c" />
+
+Go to Manage jenkins->credentials
+
+Click credentials
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/a51f4a62-e1ea-448f-8edb-70b646c0e971" />
 
 
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/72f0eab5-4cfd-4dd4-8e77-a8b3a28734b5" />
+
+Manage-jenkins->system click system
 
 
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/e33fd79b-cfba-477d-9aff-7030b99cc9a6" />
+
+Fill as below
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/dde24740-f7b0-4889-8af2-8b0a4f188506" />
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/d96494aa-8c18-45d4-8cc9-5878c9aff87f" />
+
+Check for test email in gmail inbox
 
 
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/b57fea70-b418-4804-a026-beedd305582a" />
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/2fd99b9c-2a9b-42b3-8156-91a22ceac338" />
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/737de889-8916-4025-bf55-dae4168fe9f6" />
+
+Step-11 eks cluster setup (manual)
+Create EKS Cluster (Master machine)
+
+-->create iam role
+
+12.  Go to:
+👉 AWS Console → IAM → Roles → Create Role
+
+Trusted entity: EC2
+Attach policies:
+AmazonEKSClusterPolicy
+AmazonEKSWorkerNodePolicy
+AmazonEC2ContainerRegistryReadOnly
+AmazonEKS_CNI_Policy
+administratoraccess
+
+Name:
+eksctl-ec2-role
+
+Step 2: Attach Role to EC2
+Go to EC2 → Instances
+Select your instance (jenkinsmaster)
+
+Click:
+Actions → Security → Modify IAM role
+Attach:
+eksctl-ec2-role
+Step 3: Verify Role
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/8e741047-16c8-4f72-b029-0b595013c138" />
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/431a5e60-5a59-4ab7-97c7-e55e86c5898d" />
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/1992750b-a556-4a4a-8241-f3f9ffc5d868" />
+
+-->create cluster
+eksctl create cluster --name=shopnow-cluster --region=ap-south-1 --version=1.30 --without-nodegroup
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/9e49701c-e358-4d5d-a5c7-efca61c13982" />
+
+aws eks list-clusters --region ap-south-1
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/b4f52001-d1fd-4f2f-95b5-1307f32f0199" />
 
 
+-->make eks-nodegroup-key keypair
 
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/d1c06406-c10b-4cab-9c85-07952ac83e6c" />
 
+-->Associate IAM OIDC Provider (Master machine)
+eksctl utils associate-iam-oidc-provider \
+  --region ap-south-1 \
+  --cluster shopnow-cluster \
+  --approve
 
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/34ca2376-9443-47e4-aa85-c2ed2b887e38" />
 
+-->Create Nodegroup (Master machine)
+eksctl create nodegroup --cluster=shopnow-cluster \
+                     --region=ap-south-1 \
+                     --name=shopnow \
+                     --node-type=t2.large \
+                     --nodes=2 \
+                     --nodes-min=2 \
+                     --nodes-max=2 \
+                     --node-volume-size=29 \
+                     --ssh-access \
+                     --ssh-public-key=eks-nodegroup-key
 
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/a19509c6-c49b-4c50-82f9-91ef33ba69bc" />
 
+kubectl get nodes
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/bf2b0001-5a5d-46fe-a842-e59b99a7105d" />
 
 
 
